@@ -5,8 +5,11 @@
 	email = sutaai@proton.me
 	signingkey = 96F24D7DE3EDC5A2
 
+[core]
+	editor = zed --wait
+
 [commit]
 	gpgsign = true
 
-[core]
-	editor = zed --wait
+[push]
+	autoSetupRemote = true
