@@ -1,3 +1,7 @@
+function fish_greeting
+    echo 
+end
+
 if status is-interactive
     # Starship prompt
     starship init fish | source
@@ -9,3 +13,6 @@ fish_add_path $HOME/.local/bin
 # Editor
 set EDITOR "zed --wait"
 abbr -a -- l 'ls -alhv'
+
+# Alias for "thefuck" package
+thefuck --alias | source

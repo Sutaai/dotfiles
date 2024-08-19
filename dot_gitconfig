@@ -13,3 +13,51 @@
 
 [push]
 	autoSetupRemote = true
+
+[pull]
+	ff = only
+	default = current
+
+[checkout]
+	defaultRemote = origin
+
+[fetch]
+	prune = true
+
+[stash]
+	showPatch = true
+
+[protocol]
+	version = 2
+
+[color]
+	ui = auto
+
+[color "diff"]  # i still love these choices in 2022.
+	meta = yellow bold
+	commit = green bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+	newMoved = cyan dim
+	oldMoved = blue dim
+	newMovedAlternative = cyan italic
+	oldMovedAlternative = blue italic
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[color "diff-highlight"]  # mostly dead. only needed when using diff-so-fancy
+	oldNormal = red bold
+	oldHighlight = "red bold 52"
+	newNormal = "green bold"
+	newHighlight = "green bold 22"
