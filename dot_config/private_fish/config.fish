@@ -1,5 +1,5 @@
 function fish_greeting
-    echo 
+    echo
 end
 
 if status is-interactive
@@ -7,12 +7,17 @@ if status is-interactive
     starship init fish | source
 end
 
-# Chezmoi dotfile manager
-fish_add_path $HOME/.local/bin
-
 # Editor
 set EDITOR "zed --wait"
 abbr -a -- l 'ls -alhv'
 
+# Chezmoi dotfile manager & whatever else
+fish_add_path $HOME/.local/bin
+
 # Alias for "thefuck" package
 thefuck --alias | source
+
+# Rust cargo 'n all
+if test -d "$HOME/.cargo"
+   source "$HOME/.cargo/env.fish" 
+end
