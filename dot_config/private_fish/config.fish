@@ -1,5 +1,4 @@
 function fish_greeting
-    echo
 end
 
 if status is-interactive
