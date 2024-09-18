@@ -1,0 +1,29 @@
+{{- $name := promptString "Your username" "Sutaai" -}}
+{{- $email := promptString "Your E-mail address" "sutaai@proton.me" -}}
+
+encryption: gpg
+gpg:
+    recipient: {{ $email }}
+
+data:
+    user:
+        name: {{ $name }}
+        email: {{ $email }}
+{{ if lookPath "subl" }}
+    editor: subl --wait
+    {{- writeToStdout "Sublime Text will be the default text editor." -}}
+{{ else if lookPath "code" }}
+    editor: code --wait
+    {{- writeToStdout "Visual Studio Code will be the default text editor." -}}
+{{ else if lookPath "micro" }}
+    editor: micro
+    {{- writeToStdout "micro will be the default text editor." -}}
+{{ else if lookPath "vim" }}
+    {{- /* Praise and prey but it's controlled fine chaos. */ -}}
+    editor: vim
+    {{- writeToStdout "vim will be the default text editor." -}}
+{{ else }}
+    {{- /* Praise and prey. */ -}}
+    editor: vi
+    {{- writeToStdout "vi will be the default text editor." -}}
+{{ end }}

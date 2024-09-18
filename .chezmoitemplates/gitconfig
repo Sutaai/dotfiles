@@ -1,12 +1,10 @@
-# This is Git's per-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
-	name = Sutaai
-	email = sutaai@proton.me
+	name = {{ .user.name }}
+	email = {{ .user.email }}
 	signingkey = 96F24D7DE3EDC5A2
 
 [core]
-	editor = zed --wait
+	editor = {{ .editor }}
 
 [commit]
 	gpgsign = true
