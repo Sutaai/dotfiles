@@ -32,3 +32,4 @@ Added as much as possible for every tools provided with this dotfiles repo.
 * ⚠️ You must manually set your GPG key in `.gitconfig`.
 * Will set your email address and editor to the initialized values.
 * By default, all your commits will be digitally signed with a GPG key. (Not selectable yet)
+* Default brain is `main`.

@@ -28,6 +28,9 @@
 [protocol]
 	version = 2
 
+[init]
+	defaultBranch = main
+
 [color]
 	ui = auto
 
