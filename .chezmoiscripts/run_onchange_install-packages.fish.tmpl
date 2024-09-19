@@ -1,0 +1,7 @@
+{{ if and (eq .chezmoi.os "linux") (.install_packages) -}}
+#!/usr/bin/fish
+
+# packages hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
+
+sudo dnf install {{ .packages.linux.dnf | join " " }}
+{{ end -}}

@@ -1,29 +1,49 @@
 {{- $name := promptString "Your username" "Sutaai" -}}
 {{- $email := promptString "Your E-mail address" "sutaai@proton.me" -}}
 
+{{- $installPkgs := promptBool "Do you wish to sync and install provided packages" -}}
+
 encryption: gpg
 gpg:
     recipient: {{ $email }}
 
+{{ if lookPath "code" -}}
+{{ writeToStdout "Visual Studio Code will be used for merge & diff.\n" -}}
+merge:
+    command: "bash"
+    args:
+        - "-c"
+        - "cp {{ `{{ .Target }} {{ .Target }}.base && code --new-window --wait --merge {{ .Destination }} {{ .Target }} {{ .Target }}.base {{ .Source }}` }}"
+
+diff:
+    command: "code"
+    args:
+        - "--wait"
+        - "--diff"
+        - "{{ `{{ .Destination }}` }}"
+        - "{{ `{{ .Target }}` }}"
+{{- end }}
+
 data:
+    install_packages: {{ $installPkgs }}
     user:
         name: {{ $name }}
         email: {{ $email }}
-{{ if lookPath "subl" }}
+{{- if lookPath "subl" }}
     editor: subl --wait
-    {{- writeToStdout "Sublime Text will be the default text editor." -}}
-{{ else if lookPath "code" }}
+    {{- writeToStdout "Sublime Text will be the default text editor.\n" -}}
+{{- else if lookPath "code" }}
     editor: code --wait
-    {{- writeToStdout "Visual Studio Code will be the default text editor." -}}
-{{ else if lookPath "micro" }}
+    {{- writeToStdout "Visual Studio Code will be the default text editor.\n" -}}
+{{- else if lookPath "micro" }}
     editor: micro
-    {{- writeToStdout "micro will be the default text editor." -}}
-{{ else if lookPath "vim" }}
+    {{- writeToStdout "micro will be the default text editor.\n" -}}
+{{- else if lookPath "vim" }}
     {{- /* Praise and prey but it's controlled fine chaos. */ -}}
     editor: vim
-    {{- writeToStdout "vim will be the default text editor." -}}
-{{ else }}
+    {{- writeToStdout "vim will be the default text editor.\n" -}}
+{{- else }}
     {{- /* Praise and prey. */ -}}
     editor: vi
-    {{- writeToStdout "vi will be the default text editor." -}}
+    {{- writeToStdout "vi will be the default text editor.\n" -}}
 {{ end }}

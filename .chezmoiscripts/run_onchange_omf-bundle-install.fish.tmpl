@@ -1,0 +1,9 @@
+#!/usr/bin/fish
+
+# bundle hash: {{ include "dot_config/omf/bundle" | sha256sum }}
+
+if test -d $OMF_PATH
+    omf install
+else
+    echo "omf is not installed, skipping."
+end
