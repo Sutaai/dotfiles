@@ -1,3 +1,13 @@
+# General
+
+## Packages
+
+* You can install a certain list of packages based on a "pool"
+    * The "light" pool will only install a few programs that are easy to run and shouldn't require beefy hardware.
+    * The "full" pool will install more needy programs.
+    > This decision is mostly taken because I might run a less powerful laptop, but have a very decent home computer. I want both of them to have a certain list of applications, but not all for both.
+* Certain packages will be automatically removed to avoid confusion (For example, two Firefox installation, one using snap, one using dnf).
+
 # Fish
 
 ## Added abbreviations
@@ -21,6 +31,7 @@
 
 This is the prompt used. It uses the [Jetpack](https://starship.rs/presets/jetpack) preset.
 A very few changes very realized but the core of the preset remains the same.
+I'm planning to make my own preset
 Only used if `is-interactive` is true.
 
 ## Completions
