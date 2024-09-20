@@ -1,7 +1,12 @@
 {{ if and (eq .chezmoi.os "linux") (.install_packages) -}}
 #!/usr/bin/fish
 
+# packages removal hash: {{ include ".chezmoidata/packages.remove.yaml" | sha256sum }} 
 # packages hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
+
+{{- range .packages_remove.snap }}
+sudo snap remove {{ . | quote }} --no-wait
+{{ end -}}
 
 sudo dnf install {{ .packages.linux.dnf | join " " }}
 {{ end -}}

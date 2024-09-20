@@ -1,0 +1,6 @@
+# List of packages that will be removed, in case there's a better alternatives
+# with declared packages in packages.yaml
+
+packages_remove:
+  snap:
+    - firefox
