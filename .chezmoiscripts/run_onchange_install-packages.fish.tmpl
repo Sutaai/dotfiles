@@ -1,8 +1,13 @@
 {{ if and (eq .chezmoi.os "linux") (.packages.install) -}}
 #!/usr/bin/fish
 
+# packages removal hash: {{ include ".chezmoidata/packages.remove.yaml" | sha256sum }} 
 # copr-repos hash: {{ include ".chezmoidata/repos.yaml" | sha256sum }}
 # packages hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
+
+{{- range .packages_remove.snap }}
+sudo snap remove {{ . | quote }} --no-wait
+{{ end -}}
 
 {{- range .repos.copr }}
 sudo dnf copr enable {{ . | quote }}
