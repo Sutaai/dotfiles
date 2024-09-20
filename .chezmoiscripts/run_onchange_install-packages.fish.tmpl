@@ -1,7 +1,17 @@
-{{ if and (eq .chezmoi.os "linux") (.install_packages) -}}
+{{ if and (eq .chezmoi.os "linux") (.packages.install) -}}
 #!/usr/bin/fish
 
+# copr-repos hash: {{ include ".chezmoidata/repos.yaml" | sha256sum }}
 # packages hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
 
-sudo dnf install {{ .packages.linux.dnf | join " " }}
+{{- range .repos.copr }}
+sudo dnf copr enable {{ . | quote }}
 {{ end -}}
+
+{{ if eq .packages.pool "light" }}
+sudo dnf install {{ .pkgs.light.dnf | join " " }}
+{{ else if eq .packages.pool "full" }}
+sudo dnf install {{ .pkgs.light.dnf | join " " }}
+sudo dnf install {{ .pkgs.full.dnf | join " " }}
+{{ end }}
+{{- end -}}

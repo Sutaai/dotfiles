@@ -1,5 +1,10 @@
-packages:
-  linux:
+pkgs:
+  light:
     dnf:
+      - fish
+      - starship
       - sublime-text
       - firefox
+  full:
+    dnf:
+      - vlc

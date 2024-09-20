@@ -1,7 +1,14 @@
+{{- $pkgsPool := "none" -}}
+
+{{- $configs := list "light" "full" -}}
+
 {{- $name := promptString "Your username" "Sutaai" -}}
 {{- $email := promptString "Your E-mail address" "sutaai@proton.me" -}}
-
 {{- $installPkgs := promptBool "Do you wish to sync and install provided packages" -}}
+
+{{- if $installPkgs }}
+{{- $pkgsPool = promptChoice "Which packages pool would you like to pick?" $configs }}
+{{- end -}}
 
 encryption: gpg
 gpg:
@@ -25,7 +32,11 @@ diff:
 {{- end }}
 
 data:
-    install_packages: {{ $installPkgs }}
+    packages: 
+        install: {{ $installPkgs }}
+        {{- if $installPkgs }}
+        pool: {{ $pkgsPool }}
+        {{- end }}
     user:
         name: {{ $name }}
         email: {{ $email }}
