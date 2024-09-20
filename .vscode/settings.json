@@ -1,0 +1,9 @@
+{
+    "conventionalCommits.scopes": [
+        "starship",
+        "chezmoi",
+        "fish",
+        "editor",
+        "git"
+    ]
+}
