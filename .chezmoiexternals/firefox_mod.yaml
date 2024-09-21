@@ -1,0 +1,6 @@
+.config/firefox/default-release/chrome/assets:
+  type: archive
+  url: https://github.com/datguypiko/Firefox-Mod-Blur/archive/refs/heads/master.zip
+  include: ["*/ASSETS/**"]
+  stripComponents: 2
+  refreshPeriod: "168h"

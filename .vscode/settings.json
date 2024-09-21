@@ -4,6 +4,7 @@
         "chezmoi",
         "fish",
         "editor",
-        "git"
+        "git",
+        "firefox"
     ]
 }

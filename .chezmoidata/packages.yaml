@@ -5,6 +5,7 @@ pkgs:
       - starship
       - sublime-text
       - firefox
+      - vlc
   full:
     dnf:
-      - vlc
+      - pgadmin4

@@ -8,6 +8,10 @@
     > This decision is mostly taken because I might run a less powerful laptop, but have a very decent home computer. I want both of them to have a certain list of applications, but not all for both.
 * Certain packages will be automatically removed to avoid confusion (For example, two Firefox installation, one using snap, one using dnf).
 
+# Firefox
+
+* Automatic profile setup with userChrome.css profile and user.js with privacy focused settings. Some with QOL settings for myself.
+
 # Fish
 
 ## Added abbreviations
