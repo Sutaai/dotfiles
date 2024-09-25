@@ -1,6 +1,9 @@
 {{ if and (eq .chezmoi.os "linux") (.packages.install) -}}
 #!/usr/bin/fish
 
+{{- $red := "\033[1;31m" }}
+{{ $nc := "\033[0m" -}}
+
 # packages removal hash: {{ include ".chezmoidata/packages.remove.yaml" | sha256sum }} 
 # copr-repos hash: {{ include ".chezmoidata/repos.yaml" | sha256sum }}
 # packages hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
@@ -31,14 +34,14 @@ echo -e {{ .repo_config | quote }} | sudo tee /etc/yum.repos.d/{{ .filename }} >
 {{ end -}}
 
 {{- /* Install packages based on the package pool  */}}
-echo "Installing base packages pool"
+echo -e "{{ $red }}Installing base packages pool {{- $nc }}"
 sudo dnf install {{ .pkgs.base.dnf | join " " }}
 
 {{ if eq .packages.pool "light" }}
-echo "Installing light packages pool"
+echo -e "{{ $red }}Installing light packages pool {{- $nc }}"
 sudo dnf install {{ .pkgs.light.dnf | join " " }}
 {{ else if eq .packages.pool "full" }}
-echo "Installing full packages pool"
+echo -e "{{ $red }}Installing full packages pool {{- $nc }}"
 sudo dnf install {{ .pkgs.light.dnf | join " " }}
 sudo dnf install {{ .pkgs.full.dnf | join " " }}
 {{ end }}

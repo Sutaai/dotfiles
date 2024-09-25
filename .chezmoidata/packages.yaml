@@ -10,6 +10,12 @@ pkgs:
       - sublime-text
       - firefox
       - vlc
+      - protonmail-bridge
   full:
     dnf:
+      - gimp
+      - kdenlive
       - pgadmin4
+      - virt-manager
+      - opentabletdriver
+      - torbrowser-launcher
