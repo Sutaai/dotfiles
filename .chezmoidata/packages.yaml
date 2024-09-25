@@ -1,8 +1,12 @@
 pkgs:
-  light:
+  base:
     dnf:
+      - btop
+      - micro
       - fish
       - starship
+  light:
+    dnf:
       - sublime-text
       - firefox
       - vlc

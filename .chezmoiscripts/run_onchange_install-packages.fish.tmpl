@@ -5,17 +5,40 @@
 # copr-repos hash: {{ include ".chezmoidata/repos.yaml" | sha256sum }}
 # packages hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
 
+{{- /* Remove packages that need removal */}}
 {{- range .packages_remove.snap }}
 sudo snap remove {{ . | quote }} --no-wait
 {{ end -}}
 
+{{- /* Download and enable repositories */}}
+{{- /* COPR repos */}}
 {{- range .repos.copr }}
 sudo dnf copr enable {{ . | quote }}
 {{ end -}}
 
+{{- /* DNF repos */}}
+{{- range .repos.dnf }}
+sudo rpm -v --import {{ .gpg }}
+
+{{ if not (eq (get . "repo") "") }}
+sudo dnf config-manager --add-repo {{ .repo }}
+{{ end }}
+{{ if not (eq (get . "repo_config") "") }}
+echo "Adding repo for {{ .name }}"
+echo -e {{ .repo_config | quote }} | sudo tee /etc/yum.repos.d/{{ .filename }} > /dev/null
+{{ end }}
+
+{{ end -}}
+
+{{- /* Install packages based on the package pool  */}}
+echo "Installing base packages pool"
+sudo dnf install {{ .pkgs.base.dnf | join " " }}
+
 {{ if eq .packages.pool "light" }}
+echo "Installing light packages pool"
 sudo dnf install {{ .pkgs.light.dnf | join " " }}
 {{ else if eq .packages.pool "full" }}
+echo "Installing full packages pool"
 sudo dnf install {{ .pkgs.light.dnf | join " " }}
 sudo dnf install {{ .pkgs.full.dnf | join " " }}
 {{ end }}

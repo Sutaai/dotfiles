@@ -1,3 +1,13 @@
 repos:
   copr:
     - "atim/starship"
+  dnf:
+    sublime-text:
+      name: Sublime Text
+      gpg: https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+      repo: https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+    code:
+      name: Visual Studio Code
+      gpg: https://packages.microsoft.com/keys/microsoft.asc
+      repo_config: "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc"
+      filename: vscode.repo
