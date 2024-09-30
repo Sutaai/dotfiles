@@ -16,7 +16,7 @@ sudo snap remove {{ . | quote }} --no-wait
 {{- /* Download and enable repositories */}}
 {{- /* COPR repos */}}
 {{- range .repos.copr }}
-sudo dnf copr enable {{ . | quote }}
+sudo dnf copr enable {{ . | quote }} -y
 {{ end -}}
 
 {{- /* DNF repos */}}
