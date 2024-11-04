@@ -159,8 +159,7 @@ user_pref("browser.urlbar.suggest.searches", false);
 user_pref("keyword.enabled", true);
 user_pref("browser.fixup.alternate.enabled", false);
 
-// Am I really the only person disabling this? Am I stupid in some way?
-user_pref("browser.toolbars.bookmarks.visibility", "never");
+user_pref("browser.toolbars.bookmarks.visibility", "always");
 
 // Enable QOL features
 user_pref("general.autoScroll", true);
