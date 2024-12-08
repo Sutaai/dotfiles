@@ -136,6 +136,12 @@ user_pref("captivedetect.canonicalURL", "");
 user_pref("network.captive-portal-service.enabled", false);
 user_pref("network.connectivity-service.enabled", false);
 
+// --- Personnal settings ---
+// This is the part where settings are tuned to my tastes and have more aesthetic impacts than anything else.
+
+// Skin
+user_pref("svg.context-properties.content.enabled", true);
+
 // Some stuff
 user_pref("browser.privatebrowsing.vpnpromourl", "");
 user_pref("extensions.getAddons.showPane", false);
