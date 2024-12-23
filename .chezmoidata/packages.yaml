@@ -5,13 +5,16 @@ pkgs:
       - micro
       - fish
       - starship
+      - tldr
   light:
+    # Portable computer
     dnf:
       - sublime-text
       - firefox
       - vlc
       - protonmail-bridge
   full:
+    # Tower computer
     dnf:
       - gimp
       - kdenlive

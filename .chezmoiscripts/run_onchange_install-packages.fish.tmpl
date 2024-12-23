@@ -24,7 +24,7 @@ sudo dnf copr enable {{ . | quote }} -y
 sudo rpm -v --import {{ .gpg }}
 
 {{ if not (eq (get . "repo") "") }}
-sudo dnf config-manager --add-repo {{ .repo }}
+sudo dnf config-manager addrepo --from-repofile={{ .repo }}
 {{ end }}
 {{ if not (eq (get . "repo_config") "") }}
 echo "Adding repo for {{ .name }}"
