@@ -1,5 +1,9 @@
 # Sutaai's Dotfiles
 
+Hi! I do not longer require chezmoi, as I am [no longer daily driving Linux on different computers](https://sutaai.me/posts/alright-windows-you-win/) :)
+As such, I am archiving this repository.
+But there might be a possibility for me to unarchive it at some point. Whatsoever, it is good knowledge to have and keep.
+
 This is my collection of dotfiles I am using for my differents computers.
 
 It is compatible with Linux only. No Windows support will be (ever) added.
